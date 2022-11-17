@@ -9,16 +9,20 @@
 class Solution {
 public:
     ListNode* getKthFromEnd(ListNode* head, int k) {
-        ListNode* last = head;
-        while(k-->0)
-        {
-            last = last->next;
+        if(head==nullptr || k==0)
+            return nullptr;
+        ListNode* fast=head;
+        for(int i=1;i<k;i++){
+            if(fast->next!=nullptr)
+                fast=fast->next;
+            else
+                return nullptr;
         }
-        while(last!= NULL)
-        {
-            head = head->next;
-            last = last->next;
+        ListNode* slow=head;
+        while(fast->next!=nullptr){
+            fast=fast->next;
+            slow=slow->next;
         }
-        return head;
+        return slow;
     }
 };
