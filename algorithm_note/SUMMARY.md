@@ -60,6 +60,7 @@
   * [12.1 面试的流程](./part12/interview.md)
   * [12.2 面试需要的基本知识](./part12/basic.md)
   * [12.3 高质量的代码](./part12/nicecode.md)
+  * [12.4 解决面试题的思路](./part12/beforecode.md)
 
 
 
