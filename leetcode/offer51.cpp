@@ -1,27 +1,38 @@
 // 方法一 归并排序
 class Solution {
 private:
-int merge(vector<int>& nums, int l, int m, int r){
-    vector<int> tmp(nums.begin()+l, nums.begin()+m);
-    int sum=0,i=0,j=m,k=l;
-    while(k<r){
-        if(j>=r || (i<tmp.size() && tmp[i]<=nums[j]))
-            nums[k++]=tmp[i++];
-        else{
-            nums[k++]=nums[j++];
-            sum+=tmp.size()-i;
+    int merge(vector<int>& nums, vector<int>& tmp, int l, int m, int r){
+        for(int i=l;i<m;i++)
+            tmp[i]=nums[i];
+        int i=l,j=m,k=l,cnt=0;
+        while(i<m){
+            if(j>=r || tmp[i]<=nums[j]){
+                nums[k]=tmp[i];
+                i++;
+                cnt+=j-m;
+            }else{
+                nums[k]=nums[j];
+                j++;
+            }
+            k++;
         }
+        return cnt;
     }
-    return sum;
-}
-int divcmp(vector<int>& nums, int l, int r){
-    if(r-l<=1)return 0;
-    int m=(l+r)/2;
-    return divcmp(nums,l,m)+divcmp(nums,m,r)+merge(nums,l,m,r);
-}
+
+    int reversePairs(vector<int>& nums, vector<int>& tmp, int l, int r){
+        if(r-l<=1)
+            return 0;
+        int m=l+((r-l)>>1);
+        int lnum=reversePairs(nums, tmp, l, m);
+        int rnum=reversePairs(nums, tmp, m, r);
+        int mnum=merge(nums, tmp, l, m, r);
+        return lnum+rnum+mnum;
+    }
 public:
     int reversePairs(vector<int>& nums) {
-        return divcmp(nums, 0, nums.size());
+        vector<int> copy=nums;
+        vector<int> tmp(nums.size(),0);
+        return reversePairs(copy, tmp, 0, nums.size());
     }
 };
 
