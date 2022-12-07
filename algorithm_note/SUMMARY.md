@@ -62,8 +62,5 @@
   * [12.3 高质量的代码](./part12/nicecode.md)
   * [12.4 解决面试题的思路](./part12/beforecode.md)
   * [12.5 优化时间和空间效率](./part12/effcient.md)
-
-
-
-
-
+  * [12.6 面试中的各项能力](./part12/abilities.md)
+  * [12.7 两个面试案例](./part12/cases.md)
