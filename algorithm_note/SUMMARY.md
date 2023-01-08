@@ -71,3 +71,7 @@
   * [13.4 面试之前](./part13/prepare.md)
   * [13.5 行为面试题](./part13/behavior.md)
   * [13.6 大O](./part13/bigO.md)
+  * [13.7 技术面试题](./part13/tech.md)
+  * [13.8 录用通知及其他事项](./part13/offer.md)
+  * [13.9 面试题目](./part13/part13_9/readme.md)
+    * [13.9.1 数组与字符串](./part13/part13_9/arrayAndString.md)
