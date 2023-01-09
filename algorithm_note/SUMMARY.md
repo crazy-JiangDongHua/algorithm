@@ -75,3 +75,4 @@
   * [13.8 录用通知及其他事项](./part13/offer.md)
   * [13.9 面试题目](./part13/part13_9/readme.md)
     * [13.9.1 数组与字符串](./part13/part13_9/arrayAndString.md)
+    * [13.9.2 链表](./part13/part13_9/list.md)
