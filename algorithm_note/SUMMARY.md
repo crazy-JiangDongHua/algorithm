@@ -78,3 +78,4 @@
     * [13.9.2 链表](./part13/part13_9/list.md)
     * [13.9.3 栈与队列](./part13/part13_9/stackAndQueue.md)
     * [13.9.4 树与图](./part13/part13_9/treeAndGraph.md)
+    * [13.9.5 位操作](./part13/part13_9/bitoper.md)
