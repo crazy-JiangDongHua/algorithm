@@ -83,6 +83,35 @@
       ```
    
    2. 剑指offer 22 求链表倒数第k个元素：先让其中一个指针向前走k步，接着两个指针以同样的速度一起向前进，直到前面的指针走到尽头了，则后面的指针即为倒数第k个元素。
+
+   3. 在快速排序中，除了上述的划分将序列分为两段，还可以采用另外一种划分，将序列划分为三段：小于轴点，等于轴点，大于轴点。这种划分可以应对所有元素都相同的极端情况，注意此时的边界设置为[1,n)。
+      ```c++
+      pair<int,int> partition(vector<int>& nums, int lo, int hi){
+        int id=rand()%(hi-lo)+lo;
+        swap(nums[id], nums[lo]);
+        int pivot=nums[lo];
+        int p0=lo, p1=lo;
+        for(int i=lo;i<hi;i++){
+            if(nums[i]<pivot){
+                swap(nums[i], nums[p0]);
+                if(p0<p1)
+                    swap(nums[i], nums[p1]);
+                p0++;p1++;
+            }else if(nums[i]==pivot){
+                swap(nums[i], nums[p1++]);
+            }
+        }
+        return {p0,p1};
+      }
+
+      void sort(vector<int>& nums, int lo, int hi){
+        if(hi-lo<2)
+            return;
+        pair<int, int> id=partition(nums, lo, hi);
+        sort(nums, lo, id.first);
+        sort(nums, id.second, hi);
+      }
+      ```
    
 3. **快慢指针**，代表题目：
 
@@ -134,7 +163,7 @@
 
 4. 其他类
 
-   1. 序列合并（归并排序用到）
+   1. 序列合并（归并排序用到），另外有一个空间换时间的方法是一开始就申请和序列一样长的tmp空间，避免在运行过程中反复申请内存。
 
       ```c++
       int merge(int A[], int B[], int C[], int n, int m)

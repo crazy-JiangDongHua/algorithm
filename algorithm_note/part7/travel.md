@@ -302,6 +302,7 @@ node* create(vector<int>& layerSq, vector<int>& inSq, int layerL,
         }
         if(f)break;
     }
+    node* root = new node(inSq[j]);
     root->lc=create(layerSq, inSq, i+1, layerR, inL, j);
     root->rc=create(layerSq, inSq, i+1, layerR, j+1, inR);
     return root;
@@ -322,7 +323,7 @@ node* create(vector<int>& layerSq, vector<int>& inSq, int layerL,
 4. leetcode 102 二叉树的层序遍历。
 5. leetcode 107 二叉树的层序遍历2：层序遍历的结果反过来就行了。
 6. leetcode 103 二叉树的锯齿形层次遍历：普通层次遍历加一个`bool`变量，表示该层是否反转。
-7. leetocde 99 回复二叉树：交换两个数会导致中序序列出现两个逆序对，边中序遍历边找到他们就可以。
+7. leetocde 99 恢复二叉树：交换两个数会导致中序序列出现两个逆序对，边中序遍历边找到他们就可以。
 8. leetcode 100 相同的树：选一种遍历依次对比元素是否一样，dfs或者bfs都可以，注意nullptr也要比较，因为结构也要相同。
 9. leetcode 101 对称树：思路和上一题差不多，dfs或者bfs都可以。
 10. leetcode 110 平衡二叉树: 后序遍历记录树的高度，用全局遍历记录结果，也可以通过返回不会出现的高度表示不平衡。
@@ -331,4 +332,4 @@ node* create(vector<int>& layerSq, vector<int>& inSq, int layerL,
 13. leetcode 117 填充每个结点的下一个右侧指针: 可以使用层次比那里，也可以利用上一层建好的next指针来建立下一侧个的next指针。因为不一定是满二叉树，所以需要把下一层的节点看作待串的链表，以此保留上一个结点的信息。
 14. leetcode 105 从前序序列和中序序列构建二叉树。
 15. leetcode 106 从中序与后序遍历序列构造二叉树.
-16. leetcode 889 根据前序和后序遍历构造二叉树：这题有多个答案，因为如果只有一个子树的话，根据前序和后序是分不清是左子树还是右子树的。采用和前两题一眼的递归思路，任选一个答案就行。
+16. leetcode 889 根据前序和后序遍历构造二叉树：这题有多个答案，因为如果只有一个子树的话，根据前序和后序是分不清是左子树还是右子树的。采用和前两题一样的递归思路，任选一个答案就行。

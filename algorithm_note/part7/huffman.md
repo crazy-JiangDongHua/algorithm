@@ -15,8 +15,8 @@ struct node{
 }
 
 struct cmp{
-    bool operator()(const node*& a, const node*& b){
-        return a->data>b->data
+    bool operator()(const node*& a, const node*& b) const{
+        return a->data>b->data;
     }
 }
 
@@ -28,7 +28,10 @@ node* create(vector<int>& arr){
     while(pq.size()>1){
         node *a=pq.top();pq.pop();
         node *b=pq.top();pq.pop();
-        pq.push(new node(a->data+b->data));
+        node *root=new node(a->data+b->data);
+        root->lc=a;
+        root->rc=b;
+        pq.push(root);
     }
     return pq.front();
 }
@@ -38,7 +41,7 @@ node* create(vector<int>& arr){
 
 编码：
 1. 建树
-2. dfs，没到叶结点就把<字符，编码>对存到编码表里面
+2. dfs，每到叶结点就把<字符，编码>对存到编码表里面
 
 解码
 1. 从根结点沿着编码向左向右走，每走到叶结点就输出一个字符

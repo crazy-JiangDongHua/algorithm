@@ -13,9 +13,9 @@
         if(root==nullptr)return root;
         else if(root->val==val)return root;
         else if(root->val<val){
-            search(root->rc, hot, val);
+            search(root->rc, val);
         }else{
-            search(root->lc, hot, val);
+            search(root->lc, val);
         }
     }
     ```
@@ -27,7 +27,7 @@
 
     // 实现1，按照编程规范，复用search接口
     node* insert(node* root, int val){
-        node*& x=search(root, hot, val);
+        node*& x=search(root, val);
         if(x!=nullptr)//已经存在
             return x;
         else{

@@ -35,6 +35,11 @@
 * `strcpy(a, b)`: 把b复制给a
 * `strcat(a, b)`: 把b接到a后面
 
+### 5. cassert
+
+assert宏的原型定义在<cassert>中，其作用是如果它的条件返回错误，则终止程序执行，原型定义为：`void assert( int expression );`
+assert的作用是现计算表达式 expression ，如果其值为假（即为0），那么它先向stderr打印一条出错信息，然后通过调用 abort 来终止程序运行。
+可以用来简单测试，大型项目的测试还是用googletest和googlelog。
 
 
 以下为c++中的标准库函数和stl，使用时出了引用头文件外，还需使用命名空间`using namespace std` or `using std function/class`
@@ -46,12 +51,12 @@ vector<vector<int> > tmp;// right
 vector<vector<int>> tmp;// false
 ```
 
-### 4. iostream
+### 6. iostream
 
 * `cin, cout`: c++标准输入输出，太慢了，建议只有读string采用
-* `cin.geline(char str[], len, end='\n')`: 获取一行，PAT不允许用`gets()`
+* `cin.getline(char str[], len, end='\n')`: 获取一行，PAT不允许用`gets()`
 
-### 5. algorithm
+### 7. algorithm
 
 * `sort(start, end, cmp)`: cmp(a, b)返回ture，表示这种情况a放在b前面，只有vector,string,deque可以sort
 
@@ -80,7 +85,7 @@ vector<vector<int>> tmp;// false
 
 * `upper_bound(start, end, value)`：本质是二分查找。输出迭代器或指针指向的**有序**区间`[strat,end)`元素中，第一个大于value的元素的指针（数组）或者迭代器（stl容器）。
 
-### 6. vector
+### 8. vector
 
 * 访问方式：
   1. 通过下标访问：`v[index]，index~[0，v.size()-1]`
@@ -98,7 +103,7 @@ vector<vector<int>> tmp;// false
 1. 存储数据
 2. 实现邻接表可以不用链表了哈哈哈哈
 
-### 7. set
+### 9. set
 
 ​    set自动去重，有序排列，底层红黑树
 
@@ -126,7 +131,7 @@ vector<vector<int>> tmp;// false
 1. 如果需要处理元素不唯一的情况，也可以使用multiset。
 1. 如果只需要去重，不需要排序，也可以用unordered_set，底层是散列表
 
-### 8. string
+### 10. string
 
 * 访问方式
 
@@ -149,7 +154,7 @@ vector<vector<int>> tmp;// false
 * `find(str)`：返回第一次找到str的位置，未找到返回npos。O(mn)
 * `replace(pos, len, str2)/replace(it1, it2, str2)`：替换为str2
 
-### 9. map
+### 11. map
 
 map和set的区别在于，set只存储key，而map存储了key和value。map的底层也是红黑树，所以key自动去重而且是有序的。
 
@@ -215,7 +220,7 @@ template < class Key, // map::key_type
 2. 判断大整数是否存在（直接开哈希爆内存，要手写好点的hash函数）
 3. 如果要一个key对应多个value，那也可以用multimap。如果不需要key有序，也可以用底层是散列表的unordered_map
 
-### 10. queue
+### 12. queue
 
 队列，先进先出
 
@@ -230,7 +235,7 @@ careful:
 * 使用front()和back()之前，要先检查empty()
 * 如果想首尾插入，可以使用双头队列deque。
 
-### 11. priority_queue
+### 13. priority_queue
 
 头文件是`<queue>`，优先级队列，底层是最大堆，原型如下：
 
@@ -273,7 +278,7 @@ template <typename T, typename Container=std::vector<T>, typename Compare=std::l
 * 哈夫曼树优化
 * 其他
 
-### 12. stack
+### 14. stack
 
 * `top()`：访问堆顶元素
 * `push()`：插入元素
@@ -285,7 +290,7 @@ template <typename T, typename Container=std::vector<T>, typename Compare=std::l
 
 * 模拟递归，防止爆栈，因为栈空间有限，函数递归不能太深。
 
-### 13. pair
+### 15. pair
 
 头文件为`<utility>`，因为map用到了pair，所以头文件`<map>`包含了`<utility>`。pair就是很简单又很实用的两元素结构体：
 
@@ -298,7 +303,7 @@ struct pair{
 
 * pair的比较：默认先比first，first相等再比second
 
-### 14. unordered_set
+### 16. unordered_set
 
 无序集合，底层散列表，类模板如下：
 
@@ -332,7 +337,7 @@ template < class Key,//容器中存储元素的类型
 
 * `empty()`
 
-### 15. unordered_map
+### 17. unordered_map
 
 无序集合，底层散列表，和unordered_set区别就是，多存了value，用pair表示，类模板如下：
 

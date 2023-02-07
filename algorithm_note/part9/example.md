@@ -98,7 +98,7 @@ int lsr()
             if(arr[i] == arr[i+len-1] && dp[i+1][i+len-2])
             {
                 dp[i][i+len-1] = 1;
-                a = len;
+                ans = len;
             }
             else
                 dp[i][j] = 0;
